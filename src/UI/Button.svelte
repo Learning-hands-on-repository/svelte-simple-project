@@ -1,19 +1,19 @@
 <script>
-  export let type;
+  export let type = "button";
   export let caption;
-  export let href;
-  export let mode;
+  export let href = null;
+  export let mode = null;
+  export let color = null;
 </script>
 
 {#if href}
   <a {href}>{caption}</a>
 {:else}
-  <button {type} class={mode}>
+  <button {type} class="{mode} {color}" on:click>
     {caption}
   </button>
 {/if}
 
-<!-- <button type="submit">Save</button> -->
 <style>
   button,
   a {

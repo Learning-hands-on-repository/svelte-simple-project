@@ -2,7 +2,7 @@
   export let controlType;
   export let id;
   export let label;
-  export let rows;
+  export let rows = null;
   export let value;
 </script>
 

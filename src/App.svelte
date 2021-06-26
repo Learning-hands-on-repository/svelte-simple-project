@@ -21,6 +21,7 @@
         "https://images.unsplash.com/photo-1614531341773-3bff8b7cb3fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       address: "some address 1",
       contactEmail: "some email 1",
+      isFavourite: false,
     },
     {
       id: "m2",
@@ -31,6 +32,7 @@
         "https://images.unsplash.com/photo-1611329532992-0b7ba27d85fb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       address: "some address 2",
       contactEmail: "some email 2",
+      isFavourite: false,
     },
   ];
 
@@ -46,6 +48,18 @@
     };
 
     meetups = [...meetups, newMeetup];
+  };
+
+  const toggleFavourite = (event) => {
+    const id = event.detail;
+    const meetupIndex = meetups.findIndex((m) => m.id === id);
+    const updatedMeetup = {
+      ...meetups[meetupIndex],
+      isFavourite: !meetups[meetupIndex].isFavourite,
+    };
+    const updatedMeetups = [...meetups];
+    updatedMeetups[meetupIndex] = updatedMeetup;
+    meetups = updatedMeetups;
   };
 </script>
 
@@ -97,7 +111,7 @@
     />
     <Button type="submit" caption="save" />
   </form>
-  <MeetupGrid {meetups} />
+  <MeetupGrid {meetups} on:toggle-favourite={toggleFavourite} />
 </main>
 
 <style>
