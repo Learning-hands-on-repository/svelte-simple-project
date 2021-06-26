@@ -65,10 +65,9 @@
 
 <main>
   <div class="meetup-controls">
-    <Button
-      caption="New meeting"
-      on:click={() => (isEditingMode = !isEditingMode)}
-    />
+    <Button on:click={() => (isEditingMode = !isEditingMode)}
+      >New meeting</Button
+    >
   </div>
   {#if isEditingMode}
     <EditMeetup on:add-new-meetup={addMeetup} />
