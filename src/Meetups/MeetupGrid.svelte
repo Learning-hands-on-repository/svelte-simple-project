@@ -12,7 +12,7 @@
       description={meetup.description}
       address={meetup.address}
       imageUrl={meetup.imageUrl}
-      email={meetup.email}
+      email={meetup.contactEmail}
     />
   {/each}
 </section>
