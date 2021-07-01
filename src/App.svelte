@@ -59,6 +59,10 @@
     updatedMeetups[meetupIndex] = updatedMeetup;
     meetups = updatedMeetups;
   };
+
+  const cancelEdit = () => {
+    isEditingMode = false;
+  };
 </script>
 
 <Header />
@@ -70,7 +74,7 @@
     >
   </div>
   {#if isEditingMode}
-    <EditMeetup on:add-new-meetup={addMeetup} />
+    <EditMeetup on:add-new-meetup={addMeetup} on:cancel={cancelEdit} />
   {/if}
   <MeetupGrid {meetups} on:toggle-favourite={toggleFavourite} />
 </main>
