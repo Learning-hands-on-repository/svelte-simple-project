@@ -3,6 +3,7 @@
   import TextInput from "../UI/TextInput.svelte";
   import Button from "../UI/Button.svelte";
   import Modal from "./Modal.svelte";
+  import { isEmpty } from "../helpers/validation";
 
   let title = "";
   let subtitle = "";
@@ -29,13 +30,15 @@
   };
 </script>
 
-<Modal title="Add Meetup" on:cancel>
+<Modal title="Add Meetup">
   <form on:submit|preventDefault={submitForm}>
     <TextInput
       controlType="text"
       id="title"
       label="Title"
       value={title}
+      valid={!isEmpty(title)}
+      validityMessage="Error message"
       on:input={(event) => (title = event.target.value)}
     />
     <TextInput
